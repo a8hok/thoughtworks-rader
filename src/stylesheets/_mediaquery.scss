@@ -1,0 +1,19 @@
+// MEDIA QUERY MIXIN HELPER
+
+// Desktop and Tablet Style Mixin
+@mixin medium-query {
+	@media only screen and (min-width: $bp-tablet-portrait) and (max-width: $bp-desktop) {
+		@content;
+	}
+}
+
+// Mobile Style Mixin
+@mixin small-query {
+	@media only screen and (max-width: $bp-tablet-portrait - 1) {
+		@content;
+	}
+}
+
+// BREAKPOINTS
+$bp-tablet-portrait: 768px;
+$bp-desktop: 1199px;

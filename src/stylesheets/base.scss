@@ -5,6 +5,7 @@
 @import 'error';
 @import 'header';
 @import 'footer';
+@import 'mediaquery';
 
 @import url(https://www.thoughtworks.com/css/screen.css);
 
@@ -389,5 +390,32 @@ body {
   25%{transform:translate(160%)}
   50%{transform:translate(160%, 160%)}
   75%{transform:translate(0, 160%)}
+  }
+}
+
+@include medium-query {
+  #radar-container {
+    .quadrant-group-first-container, .quadrant-group-fourth-container {
+      left: -325px !important;
+      right: 0 !important;
+    }
+    .quadrant-group-second-container, .quadrant-group-third-container {
+      right: -325px !important;
+      left: 0 !important;
+    }
+    .quadrant-group-first-container, .quadrant-group-second-container, .quadrant-group-third-container,
+    .quadrant-group-fourth-container {
+      transform: scale(0.7,0.7);
+    }
+  }
+  #radar {
+    div.quadrant-table {
+      h3, ul li .blip-list-item  {
+        font-size: 15px;
+      }
+    }
+    div.quadrant-table.selected {
+      max-width: 35%;
+    }
   }
 }
