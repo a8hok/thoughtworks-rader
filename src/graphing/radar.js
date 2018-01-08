@@ -474,7 +474,7 @@ const Radar = function (size, radar) {
     var blipScale = 3 / 4;
     var blipTranslate = (1 - blipScale) / blipScale;
 
-    svg.style('left', moveLeft + 'px').style('right', moveRight + 'px');
+    svg.attr('class', 'quadrant-group-' + order + '-container').style('left', moveLeft + 'px').style('right', moveRight + 'px');
     d3.select('.quadrant-group-' + order)
       .transition()
       .duration(1000)
@@ -519,7 +519,7 @@ const Radar = function (size, radar) {
     plotQuadrantButtons(quadrants, header);
 
     radarElement.style('height', size + 14 + 'px');
-    svg = radarElement.append("svg").call(tip);
+    svg = radarElement.append("div").attr('id', 'radar-container').append("svg").call(tip);
     svg.attr('id', 'radar-plot').attr('width', size).attr('height', size + 14);
 
     _.each(quadrants, function (quadrant) {
