@@ -128,6 +128,23 @@ const Radar = function (size, radar) {
       .attr('transform', 'scale(' + (22 / 64) + ') translate(' + (-404 + x * (64 / 22) - 17) + ', ' + (-282 + y * (64 / 22) - 17) + ')');
   }
 
+  function square(blip, x, y, order, group) {
+    return (group || svg).append('rect')
+    .attr('width', 30)
+    .attr('height', 30)
+    .style('fill', "rgb(0,0,255)")
+    .attr('transform', 'scale(' + (blip.width / 34) + ') translate(' + (-404 + x * (34 / blip.width) - 17) + ', ' + (-382 + y * (34 / blip.width) - 17) + ')')
+    .attr('class', order);
+  }
+
+  function squareLegend(x, y, group) {
+    return (group || svg).append('rect')
+      .attr('width', 30)
+      .attr('height', 30)
+      .attr('transform', 'scale(' + (22 / 64) + ') translate(' + (2 + x * (64 / 22) - 17) + ', ' + (60 + y * (64 / 22) - 17) + ')')
+      .style('fill', "black");
+  }
+
   function addRing(ring, order) {
     var table = d3.select('.quadrant-table.' + order);
     table.append('h3').text(ring);
@@ -319,6 +336,7 @@ const Radar = function (size, radar) {
 
     var triangleKey = "New or moved";
     var circleKey = "No change";
+    var squareKey = "Blocked status";
 
     var container = d3.select('svg').append('g')
       .attr('class', 'legend legend'+"-"+order);
@@ -370,6 +388,15 @@ const Radar = function (size, radar) {
       .attr('y', y + 25)
       .attr('font-size', '0.8em')
       .text(circleKey);
+
+      squareLegend(x, y + 20, container);
+
+      container
+      .append('text')
+      .attr('x', x + 15)
+      .attr('y', y + 45)
+      .attr('font-size', '0.8em')
+      .text(squareKey);
   }
 
   function redrawFullRadar() {
