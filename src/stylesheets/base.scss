@@ -190,8 +190,12 @@ body {
         visibility: hidden;
         transition: visibility 1s ease 1s;
         color: $black;
-      }
 
+        &.legend-first, &.legend-second, &.legend-third, &.legend-fourth {
+          display: none;
+        }
+      }
+      
       path {
         &.ring-arc-3 {
           stroke: none;
@@ -222,19 +226,15 @@ body {
 
       circle, polygon, path {
         &.first {
-          fill: $green;
           stroke: none;
         }
         &.second {
-          fill: $blue;
           stroke: none;
         }
         &.third {
-          fill: $orange;
           stroke: none;
         }
         &.fourth {
-          fill: red;
           stroke: none;
         }
       }
